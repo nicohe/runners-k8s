@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: arc-demo-service
+  namespace: dev
+  labels:
+    app: arc-demo
+    environment: dev
+spec:
+  selector:
+    app: arc-demo
+    environment: dev
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30081
+  type: NodePort

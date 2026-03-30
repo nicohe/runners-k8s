@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arc-demo-app
+  namespace: prod
+  labels:
+    app: arc-demo
+    environment: prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: arc-demo
+      environment: prod
+  template:
+    metadata:
+      labels:
+        app: arc-demo
+        environment: prod
+    spec:
+      containers:
+      - name: app
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
