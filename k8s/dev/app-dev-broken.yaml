@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: nginx:alpine
+        image: nginx:imagen-que-no-existe
         ports:
         - containerPort: 80
         env:
